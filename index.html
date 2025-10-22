@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KolesterolSehat.com - Cek Kesehatan Kolesterol Anda</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1>🫀 KolesterolSehat.com</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#calculator">Cek Kolesterol</a></li>
+                    <li><a href="#info">Informasi</a></li>
+                    <li><a href="#konselor">Konselor</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Jaga Kesehatan Jantung Anda</h1>
+                <p>Cek kadar kolesterol Anda secara gratis dan dapatkan rekomendasi kesehatan dari konselor profesional</p>
+                <a href="#calculator" class="btn-primary">Cek Kolesterol Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">Kalkulator Kolesterol</h2>
+            <div class="calculator-card">
+                <form id="cholesterolForm">
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" id="name" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="age">Usia (tahun)</label>
+                            <input type="number" id="age" required min="1" max="120">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender">Jenis Kelamin</label>
+                            <select id="gender" required>
+                                <option value="">Pilih</option>
+                                <option value="pria">Pria</option>
+                                <option value="wanita">Wanita</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="totalCholesterol">Kolesterol Total (mg/dL)</label>
+                        <input type="number" id="totalCholesterol" required min="0" max="500">
+                        <small>Normal: < 200 mg/dL</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ldl">LDL - Kolesterol Jahat (mg/dL)</label>
+                        <input type="number" id="ldl" required min="0" max="300">
+                        <small>Normal: < 100 mg/dL</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hdl">HDL - Kolesterol Baik (mg/dL)</label>
+                        <input type="number" id="hdl" required min="0" max="200">
+                        <small>Normal: > 40 mg/dL (Pria), > 50 mg/dL (Wanita)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="triglycerides">Trigliserida (mg/dL)</label>
+                        <input type="number" id="triglycerides" required min="0" max="1000">
+                        <small>Normal: < 150 mg/dL</small>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Analisis Hasil</button>
+                </form>
+
+                <!-- Result Section -->
+                <div id="result" class="result-section" style="display: none;">
+                    <h3>Hasil Analisis Kolesterol</h3>
+                    <div class="result-card">
+                        <div class="result-header">
+                            <h4 id="resultName"></h4>
+                            <span id="resultStatus" class="status-badge"></span>
+                        </div>
+                        
+                        <div class="result-details">
+                            <div class="result-item">
+                                <span class="label">Kolesterol Total:</span>
+                                <span id="totalResult" class="value"></span>
+                            </div>
+                            <div class="result-item">
+                                <span class="label">LDL (Jahat):</span>
+                                <span id="ldlResult" class="value"></span>
+                            </div>
+                            <div class="result-item">
+                                <span class="label">HDL (Baik):</span>
+                                <span id="hdlResult" class="value"></span>
+                            </div>
+                            <div class="result-item">
+                                <span class="label">Trigliserida:</span>
+                                <span id="trigResult" class="value"></span>
+                            </div>
+                        </div>
+
+                        <div id="recommendation" class="recommendation">
+                            <!-- Rekomendasi akan ditampilkan di sini -->
+                        </div>
+
+                        <div class="consult-cta">
+                            <p>💬 Butuh konsultasi lebih lanjut?</p>
+                            <a href="#konselor" class="btn-secondary">Hubungi Konselor Kami</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section id="info" class="info-section">
+        <div class="container">
+            <h2 class="section-title">Tentang Kolesterol</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="icon">📊</div>
+                    <h3>Apa itu Kolesterol?</h3>
+                    <p>Kolesterol adalah lemak yang diproduksi oleh hati dan diperoleh dari makanan. Kolesterol diperlukan tubuh untuk membentuk sel-sel sehat, tetapi kadar yang tinggi dapat meningkatkan risiko penyakit jantung.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon">❤️</div>
+                    <h3>Kolesterol Baik (HDL)</h3>
+                    <p>HDL membantu menghilangkan kolesterol jahat dari darah. Kadar HDL yang tinggi dapat mengurangi risiko penyakit jantung dan stroke.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon">⚠️</div>
+                    <h3>Kolesterol Jahat (LDL)</h3>
+                    <p>LDL dapat menumpuk di dinding arteri, menyebabkan penyumbatan dan meningkatkan risiko serangan jantung dan stroke.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon">🥗</div>
+                    <h3>Cara Menurunkan Kolesterol</h3>
+                    <p>Konsumsi makanan sehat, olahraga teratur, hindari merokok, dan kelola stres untuk menjaga kadar kolesterol tetap sehat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Konselor Section -->
+    <section id="konselor" class="konselor-section">
+        <div class="container">
+            <h2 class="section-title">Konselor Kesehatan Kami</h2>
+            <div class="konselor-card">
+                <div class="konselor-image">
+                    <div class="avatar">ND</div>
+                </div>
+                <div class="konselor-info">
+                    <h3>Nada Destya</h3>
+                    <p class="title">Konselor Kesehatan & Nutrisi</p>
+                    <p class="description">
+                        Berpengalaman lebih dari 8 tahun dalam memberikan konsultasi kesehatan jantung dan manajemen kolesterol. 
+                        Berkomitmen membantu Anda mencapai gaya hidup sehat dan mencegah penyakit kardiovaskular.
+                    </p>
+                    <div class="credentials">
+                        <div class="credential-item">
+                            <span class="icon">🎓</span>
+                            <span>S.Gz, M.Gizi - Ahli Gizi</span>
+                        </div>
+                        <div class="credential-item">
+                            <span class="icon">⭐</span>
+                            <span>8+ Tahun Pengalaman</span>
+                        </div>
+                        <div class="credential-item">
+                            <span class="icon">👥</span>
+                            <span>1000+ Klien Terbantu</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn-primary">Konsultasi Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Informasi Kontak</h3>
+                    <div class="contact-item">
+                        <span class="icon">📧</span>
+                        <div>
+                            <strong>Email</strong>
+                            <p>nada.destya@kolesterolsehat.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📱</span>
+                        <div>
+                            <strong>WhatsApp</strong>
+                            <p>+62 812-3456-7890</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">⏰</span>
+                        <div>
+                            <strong>Jam Operasional</strong>
+                            <p>Senin - Jumat: 09.00 - 17.00 WIB</p>
+                            <p>Sabtu: 09.00 - 14.00 WIB</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Kirim Pesan</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Nama Lengkap" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="No. Telepon" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" placeholder="Pesan Anda" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>KolesterolSehat.com</h3>
+                    <p>Platform terpercaya untuk pemantauan kesehatan kolesterol Anda.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Link Cepat</h4>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#calculator">Cek Kolesterol</a></li>
+                        <li><a href="#info">Informasi</a></li>
+                        <li><a href="#konselor">Konselor</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Disclaimer</h4>
+                    <p>Hasil kalkulasi ini hanya sebagai referensi awal. Untuk diagnosis yang akurat, konsultasikan dengan dokter.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 KolesterolSehat.com - Konselor: Nada Destya. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
